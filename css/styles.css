@@ -1,0 +1,25 @@
+#checker-board {
+		width: 800px;
+		height: 800px;
+		background-color: #ffbc00;
+		border: 10px solid black;
+		border-radius: 10px;
+		position: relative;
+	}
+
+	.square {
+		width: 100px;
+		height: 100px;
+		float: left;
+	}
+	.dark { background-color: black; }
+	.light { background-color: gray; }
+
+	.checker {
+		width: 80px;
+		height: 80px;
+		border-radius: 50px;
+		position: absolute;
+	}
+	.red { background-color: red; }
+	.black { background-color: black; }
