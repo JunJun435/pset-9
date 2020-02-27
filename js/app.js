@@ -1,19 +1,23 @@
 var canvas = documnet.getElementById("bboard");
 var ctx = canvas.getContext("2d");
+var x = canvas.width/2;
+var y = canvas.height-30;
+var dx = 2;
+var dy = -2;
 
-ctx.beginPath();
-ctx.rect(40, 80, 100, 100);
-ctx.fillStyle = "#FF0000"
-ctx.fill();
-ctx.closePath();
+function drawBall() {
+  ctx.beginPath();
+  ctx.arc(x, y, 10, 0, Math.PI*2);
+  ctx.fillStyle = "#0095DD";
+  ctx.fill();
+  ctx.closePath();
+}
 
-ctx.beginPath();
-ctx.arc(240, 160, 20, 0, Math.PI*2, false);
-ctx.fillStyle = "green";
-ctx.fill();
-ctx.closePath();
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, cavas.height);
+  drawBall();
+  x += dx;
+  y += dy;
+}
 
-ctx.beginPath();
-ctx.rect(160, 10, 100, 40);
-ctx.strokeSty;e = "#000000"
-ctx.stroke();
+setInterval)draw, 10);

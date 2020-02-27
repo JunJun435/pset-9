@@ -11,6 +11,26 @@ background-color: powderblue;
     width: 960px;
 }
 
+#start {
+    padding : 20px;
+    background-color: gray;
+    outline-style: solid;
+    outline-color: lightgray;
+    width : 150px;
+    color: white;
+    position : absolute;
+    bottom : 300px;
+    left: 500px;
+}
+
+.container {
+    background-color: Blue;
+    width : 1024;
+    height : 512;
+    top : 50px;
+    right : 20px;
+}
+
 #checker-board {
 		width: 800px;
 		height: 800px;
