@@ -1,58 +1,113 @@
+/* CSS For Tic-Tac-Toe */
 body {
-background-color: powderblue;
+  text-align: center;
+  font-family: "Roboto", monospace;
+  background-color: #ff7f50;
 }
 
-#bboard {
-		padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 960px;
+
+
+h1 {
+  margin: 0 auto;
+  font-family: "Major Mono Display", monospace;
+  font-size: 48px;
+  margin: 2%;
 }
 
-#start {
-    padding : 20px;
-    background-color: gray;
-    outline-style: solid;
-    outline-color: lightgray;
-    width : 150px;
-    color: white;
-    position : absolute;
-    bottom : 300px;
-    left: 500px;
+
+
+h2 {
+  font-size: 36px;
+  font-weight: lighter;
+  margin: 2%;
+  border-style: solid;
+  padding: 10px;
+  background-color: white;
 }
+
+
 
 .container {
-    background-color: Blue;
-    width : 1024;
-    height : 512;
-    top : 50px;
-    right : 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#checker-board {
-		width: 800px;
-		height: 800px;
-		background-color: #ffbc00;
-		border: 10px solid black;
-		border-radius: 10px;
-		position: relative;
-	}
 
-	.square {
-		width: 100px;
-		height: 100px;
-		float: left;
-	}
-	.dark { background-color: black; }
-	.light { background-color: gray; }
 
-	.checker {
-		width: 80px;
-		height: 80px;
-		border-radius: 50px;
-		position: absolute;
-	}
-	.red { background-color: red; }
-	.black { background-color: black; }
+.column {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+
+
+.wrap {
+  flex-wrap: wrap;
+  height: 456px;
+  width: 456px;
+}
+
+
+
+.square {
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  font-size: 96px;
+  height: 150px;
+  line-height: 150px;
+  user-select: none;
+  width: 150px;
+}
+
+
+
+.square:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+
+
+#reset-button {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: 21px;
+  line-height: 55px;
+  margin: 1%;
+  text-align: center;
+  width: 456px;
+}
+
+
+
+#reset-button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 75px 0;
+}
+
+td {
+  padding: 10px 0;
+}
+
+button {
+  font-size: 21px;
+  padding: 10px;
+  border-radius: 1px;
+  background-color: #ffffff;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* CSS For Brick Breaker */
