@@ -1,4 +1,3 @@
-
 var canvas = document.getElementById("canvas_for_game");
 	var ctx = canvas.getContext("2d");
   var paddleHeight = 10;
@@ -22,3 +21,36 @@ var canvas = document.getElementById("canvas_for_game");
 	var dx = 2;
 	var dy = -2;
 	var px = 7;
+
+	var bricks = [];
+	for(c = 0; c < brickColumnCount; c++) {
+		bricks[c] = [];
+		for(r=0; r<brickRowCount; r++) {
+			bricks[c][r] = { x: 0, y: 0, status: 1 };
+		}
+	}
+
+	var score = 0;
+	var scoreFont = "18px Georgia";
+	var scoreFillStyle = "black";
+
+	document.addEventListener("keydown", keyDownHandler, false);
+	document.addEventListener("keyup", keyUpHandler, false);
+
+	function drawBall() {
+		ctx.beginPath();
+		ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+		ctx.fillStyle = ballColor;
+		ctx.fill();
+		ctx.closePath();
+	}
+
+	function drawPaddle() {
+		ctx.beginPath();
+		ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+		ctx.fillStyle = "black";
+		ctx.fill();
+		ctx.closePath();
+	}
+
+	
