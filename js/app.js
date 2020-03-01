@@ -1,23 +1,100 @@
-var canvas = documnet.getElementById("bboard");
-var ctx = canvas.getContext("2d");
-var x = canvas.width/2;
-var y = canvas.height-30;
-var dx = 2;
-var dy = -2;
+///////////////////// CONSTANTS /////////////////////////////////////
+const winningConditions = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+]
+///////////////////// APP STATE (VARIABLES) /////////////////////////
+let board;
+let turn;
+let win;
+let keepScoreX = 0;
+let keepScoreO = 0;
 
-function drawBall() {
-  ctx.beginPath();
-  ctx.arc(x, y, 10, 0, Math.PI*2);
-  ctx.fillStyle = "#0095DD";
-  ctx.fill();
-  ctx.closePath();
+///////////////////// CACHED ELEMENT REFERENCES /////////////////////
+const squares = Array.from(document.querySelectorAll("#board div"));
+const message = document.querySelector("h2");
+
+///////////////////// EVENT LISTENERS ///////////////////////////////
+window.onload = init;
+document.getElementById("board").onclick = takeTurn;
+document.getElementById("reset-button").onclick = init;
+document.getElementById('ButtonX').onclick = firstX;
+document.getElementById('ButtonO').onclick = firstO;
+
+///////////////////// FUNCTIONS /////////////////////////////////////
+function init() {
+  board = [
+    "", "", "",
+    "", "", "",
+    "", "", ""
+  ];
+  turn = "X";
+  win = null;
+
+  render();
 }
 
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, cavas.height);
-  drawBall();
-  x += dx;
-  y += dy;
+function firstX() {
+  document.getElementById('turnButton').innerHTML = "Turn: X";
+  turn = "X";
 }
 
-setInterval)draw, 10);
+function firstO() {
+  document.getElementById('turnButton').innerHTML = "Turn: O";
+  turn = "O";
+}
+
+function render() {
+  board.forEach(function(mark, index) {
+    squares[index].textContent = mark;
+  });
+
+  message.textContent =
+    win === "T" ? "It's a tie!" : win ? `${win} wins!` : `Turn: ${turn}`;
+}
+
+function takeTurn(e) {
+  if (!win) {
+    let index = squares.findIndex(function(square) {
+      return square === e.target;
+    });
+
+    if (board[index] === "") {
+      board[index] = turn;
+      turn = turn === "X" ? "O" : "X";
+      win = getWinner();
+
+      render();
+    }
+  }
+}
+
+function getWinner() {
+  let winner = null;
+
+  winningConditions.forEach(function(condition, index) {
+    if (
+      board[condition[0]] &&
+      board[condition[0]] === board[condition[1]] &&
+      board[condition[1]] === board[condition[2]]
+    ) {
+      winner = board[condition[0]];
+    }
+  });
+
+  if (winner === "X") {
+    keepScoreX++;
+    document.getElementById('ScoreX').innerHTML = keepScoreX;
+  } else if (winner === "O") {
+    keepScoreO++;
+    document.getElementById('ScoreO').innerHTML = keepScoreO;
+  }
+
+  return winner ? winner : board.includes("") ? null : "T";
+}
