@@ -1,4 +1,4 @@
-var canvas = document.getElementById("canvas_for_game");
+var canvas = document.getElementById("bBreaker");
 	var ctx = canvas.getContext("2d");
   var paddleHeight = 10;
 	var paddleWidth = 75;
@@ -101,7 +101,7 @@ var canvas = document.getElementById("canvas_for_game");
 						score++;
 
 						if(score == brickRowCount*brickColumnCount) {
-							alert("Great Job! You win!");
+							alert("You Win!");
 							document.location.reload();
 						}
 					}
