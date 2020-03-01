@@ -1,1 +1,24 @@
 
+var canvas = document.getElementById("canvas_for_game");
+	var ctx = canvas.getContext("2d");
+  var paddleHeight = 10;
+	var paddleWidth = 75;
+	var paddleX = (canvas.width-paddleWidth)/2;
+	var rightPressed = false;
+	var leftPressed = false;
+	var brickRowCount = 4;
+	var brickColumnCount = 9;
+	var brickWidth = 70;
+	var brickHeight = 20;
+	var brickPadding = 15;
+	var brickOffsetTop = 30;
+	var brickOffsetLeft = 30;
+	var brickColor = "blue";
+	var ballRadius = 10;
+	var ballColor = "black"
+	var speed = 10;
+	var x = canvas.width/2;
+	var y = canvas.height-30;
+	var dx = 2;
+	var dy = -2;
+	var px = 7;
