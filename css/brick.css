@@ -1,7 +1,15 @@
+#current {
+  color:white;
+}
+
+h1 {
+  color: white;
+}  
+    
 nav a {
   text-decoration: black;
   font-family: Comic Sans MS;
-  color: black
+  color: white;
 }
 
 nav a:hover {
@@ -25,7 +33,7 @@ canvas {
   display: block;
   margin-bottom: 20px;
   margin-top: 20px;
-  border: 4px solid black;
+  border: 4px solid white;
   margin-left: auto;
   margin-right: auto;
 }
