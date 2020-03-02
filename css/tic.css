@@ -1,7 +1,19 @@
+a {
+  color:white;
+}
+
+#current {
+  color:white;
+}
+
+h1 {
+  color:white;
+}
+
 body {
   text-align: center;
-  font-family: "Comic Sans MS", monospace;
-  background-color: #ff7f50;
+  font-family: "Comic Sans MS";
+  background-image: url("../images/img1.png");
 }
 
 
