@@ -1,1 +1,24 @@
+body {
+    background-image: url("../images/img1.png");
+    font-family: "Comic Sans MS";
+}
 
+h1 {
+  color: white;
+}
+
+h2 {
+  color:white
+}
+
+center {
+  color:white
+}
+
+a {
+  color:white
+}
+
+a:hover {
+  color:red
+}
