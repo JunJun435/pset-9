@@ -1,26 +1,28 @@
 var canvas = document.getElementById("bBreaker");
 	var ctx = canvas.getContext("2d");
   var paddleHeight = 10;
-	var paddleWidth = 75;
+	var paddleWidth = 65;
 	var paddleX = (canvas.width-paddleWidth)/2;
 	var rightPressed = false;
 	var leftPressed = false;
 	var brickRowCount = 4;
-	var brickColumnCount = 9;
-	var brickWidth = 70;
+	var brickColumnCount = 7;
+	var brickWidth = 97.5;
 	var brickHeight = 20;
-	var brickPadding = 15;
+	var brickPadding = 10;
 	var brickOffsetTop = 30;
 	var brickOffsetLeft = 30;
-	var brickColor = "blue";
+	var brickColor = "orange";
 	var ballRadius = 10;
 	var ballColor = "black"
-	var speed = 10;
+	var speed = 12;
 	var x = canvas.width/2;
 	var y = canvas.height-30;
+	var lives = 3
 	var dx = 2;
 	var dy = -2;
 	var px = 7;
+
 
 	var bricks = [];
 	for(c = 0; c < brickColumnCount; c++) {
@@ -31,8 +33,7 @@ var canvas = document.getElementById("bBreaker");
 	}
 
 	var score = 0;
-	var scoreFont = "18px Georgia";
-	var scoreFillStyle = "black";
+
 
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
@@ -101,7 +102,7 @@ var canvas = document.getElementById("bBreaker");
 						score++;
 
 						if(score == brickRowCount*brickColumnCount) {
-							alert("You Win!");
+							alert("You win!");
 							document.location.reload();
 						}
 					}
@@ -111,10 +112,17 @@ var canvas = document.getElementById("bBreaker");
 	}
 
 	function drawScore() {
-		ctx.font = scoreFont;
-		ctx.fillStyle = scoreFillStyle;
-		ctx.fillText("Bricks Broken: "+score, 338, 20);
+		ctx.font = "22px Georgia";
+		ctx.fillStyle = "Black";
+		ctx.fillText("Score: "+score, 338, 20);
 	}
+
+	function drawLives() {
+  ctx.font = "22px Lato";
+  ctx.fillStyle = "black";
+  ctx.fillText("Lives: "+lives, 638, 23);
+}
+
 
 	function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -124,6 +132,7 @@ var canvas = document.getElementById("bBreaker");
 		drawPaddle();
 		collisionDetection();
 		drawScore();
+		drawLives();
 
 		x += dx;
 		y += dy;
@@ -139,9 +148,21 @@ var canvas = document.getElementById("bBreaker");
 				dy = -dy;
 			}
 			else {
-				document.location.reload();
+				{
+				    lives--;
+				 if(!lives) {
+				        alert("You Lost. Try Again!");
+				        document.location.reload();
+				      } else {
+				        x = canvas.width/2;
+				        y = canvas.height-30;
+				        dx = 3;
+				        dy = -3;
+				        paddleX = (canvas.width-paddleWidth)/2;
+				      }
 			}
 		}
+	}
 
 		if(rightPressed && paddleX < canvas.width-paddleWidth) {
 			paddleX += px;
